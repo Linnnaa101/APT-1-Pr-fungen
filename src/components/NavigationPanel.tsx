@@ -1,2 +1,20 @@
 import type { Task } from '../data/tasks';
-export function NavigationPanel({ tasks, current }: { tasks: Task[]; current: number }) { return <nav className="nav-panel"><strong>Navigation</strong>{tasks.map((t,i)=><a className={i===current?'active':''} key={t.id} href={`#${t.id}`}>Aufgabe {i+1}<small>{t.points} P</small></a>)}</nav>; }
+
+export function NavigationPanel({ tasks, current }: NavigationPanelProps) {
+  return (
+    <nav className="nav-panel">
+      <strong>Navigation</strong>
+      {tasks.map((task, index) => (
+        <a className={index === current ? 'active' : ''} key={task.id} href={`#${task.id}`}>
+          Aufgabe {index + 1}
+          <small>{task.points} P</small>
+        </a>
+      ))}
+    </nav>
+  );
+}
+
+type NavigationPanelProps = {
+  tasks: Task[];
+  current: number;
+};
