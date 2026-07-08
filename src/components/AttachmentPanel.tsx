@@ -1,0 +1,3 @@
+import type { Attachment } from '../data/tasks';
+export function AttachmentPanel({ attachments=[] }: { attachments?: Attachment[] }) { if (!attachments.length) return null; return <aside className="attachment-box"><strong>Anlagen</strong>{attachments.map(a=><details key={a.id}><summary>{a.title}</summary><AttachmentContent attachment={a}/></details>)}</aside>; }
+function AttachmentContent({ attachment }: { attachment: Attachment }) { const c:any = attachment.content; if (attachment.type==='table') return <table className="exam-table"><thead><tr>{c.headers.map((h:string)=><th key={h}>{h}</th>)}</tr></thead><tbody>{c.rows.map((r:string[],i:number)=><tr key={i}>{r.map((x,j)=><td key={j}>{x}</td>)}</tr>)}</tbody></table>; return <p>{String(c)}</p>; }

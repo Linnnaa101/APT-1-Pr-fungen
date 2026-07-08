@@ -1,0 +1,2 @@
+import { Timer } from './Timer';
+export function ExamHeader({ title, submitted, onExpired }: { title:string; submitted:boolean; onExpired:()=>void }) { return <header className="exam-header"><div><strong>AP Teil 1 – Prüfungssimulation</strong><small>{title} · Bearbeitungszeit 90 Minuten · Hilfsmittel: nicht programmierter Taschenrechner · nicht offiziell</small></div><Timer running={!submitted} onExpired={onExpired}/></header>; }
